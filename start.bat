@@ -1,1 +1,1 @@
-ruby start.rb
+ruby lib/start.rb
