@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Tori::VERSION
   spec.authors       = ["Yaro"]
   spec.email         = ["osyaroslav@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Tori game.}
+  spec.description   = %q{Soon.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
