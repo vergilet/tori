@@ -4,13 +4,13 @@ module Tori
       super(640, 480, false) #3rd - fullscreen
       self.caption = 'Tori'
 
-      @dude = Player.new(self, "protagonist")
+      @dude = Tori::Player.new(self, "protagonist")
       # @backdrop = Backdrop.new(self, "1.jpg")
     end
 
     def draw
       # @backdrop.draw
-      @dude.draw
+      # @dude.draw
     end
   end
 end
