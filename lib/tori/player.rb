@@ -1,11 +1,13 @@
 module Tori
   class Player
-    SCALE = 0.8
-    POS_Y = 300
+    SCALE = 0.5
+    ZOOM = 0.8
+    POS_Y = 370
     SPEED = 3
 
     def initialize(window, name)
       @image = Gosu::Image.new(window, "assets/#{ name }/idle.png", false)
+      @facing = :right
     end
 
     def move_to(x)
@@ -13,10 +15,12 @@ module Tori
     end
 
     def move_left
+      @facing = :left
       @pos_x -= SPEED
     end
 
     def move_right
+      @facing = :right
       @pos_x += SPEED
     end
 
@@ -29,7 +33,8 @@ module Tori
     end
 
     def draw
-      @image.draw(@pos_x, POS_Y, 1, SCALE, SCALE)
+      scale_x = (@facing == :right ? ZOOM : -(ZOOM))
+      @image.draw_rot(@pos_x, POS_Y, 10, 0, SCALE, SCALE, scale_x, ZOOM)
     end
   end
 end

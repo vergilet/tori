@@ -3,8 +3,7 @@ module Tori
 
     def initialize(window, filename)
       super(window, "assets/bg/#{ filename }", false)
-
-      @scale = window.height / height
+      @scale = window.height.to_f / height.to_f
       @bg_x = -(width * @scale - window.width) / 2
     end
 
