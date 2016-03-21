@@ -6,8 +6,17 @@ module Tori
     SPEED = 3
 
     def initialize(window, name)
-      @image = Gosu::Image.new(window, "assets/#{ name }/idle.png", false)
+      @tiles = Tileset.new(window, name)
       @facing = :right
+      idle!
+    end
+
+    def idle!
+      @tiles.idle!
+    end
+
+    def walking!
+      @tiles.walking!
     end
 
     def move_to(x)
@@ -24,17 +33,36 @@ module Tori
       @pos_x += SPEED
     end
 
-    def left
-      @pos_x
-    end
-
-    def right
-      @pos_x - 300
-    end
-
     def draw
       scale_x = (@facing == :right ? ZOOM : -(ZOOM))
-      @image.draw_rot(@pos_x, POS_Y, 10, 0, SCALE, SCALE, scale_x, ZOOM)
+      @tiles.draw(@pos_x, POS_Y, 10, 0, SCALE, SCALE, scale_x, ZOOM)
+    end
+
+    private
+
+    class Tileset < Hash
+
+      def initialize(window, name)
+        self[:idle]     = Tori::Animation.new(window, "#{ name }/idle")
+        self[:walking]  = Tori::Animation.new(window, "#{ name }/walking")
+        idle!
+      end
+
+      def idle!
+        @current_animation = self[:idle]
+      end
+
+      def walking!
+        @current_animation = self[:walking]
+      end
+
+      def width
+        @current_animation.width
+      end
+
+      def draw(*args)
+        @current_animation.draw *args
+      end
     end
   end
 end

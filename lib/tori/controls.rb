@@ -11,10 +11,20 @@ module Tori
       @player = player
     end
 
+    def button_down(key)
+      case CONTROLS[key]
+      when :left, :right then @player.walking!
+      end
+    end
+
+    def button_up(key)
+      @player.idle!
+    end
+
     def update(left, right)
       case maching_action
-      when :left then @player.move_left #if @player.left > left
-      when :right then @player.move_right #if @player.right < right
+      when :left then @player.move_left
+      when :right then @player.move_right
       end
     end
 
