@@ -15,7 +15,15 @@ module Tori
     end
 
     def update
-      @controls.update(0, 300)
+      @controls.update(nil, nil)
+    end
+
+    def button_down(id)
+      @controls.button_down button_id_to_char(id)
+    end
+
+    def button_up(id)
+      @controls.button_up button_id_to_char(id)
     end
 
     def button_down?(char)
