@@ -10,6 +10,10 @@ module Tori
       @images[0].width
     end
 
+    def height
+      @images[0].height
+    end
+
     def draw(*args)
       image = @images[Gosu.milliseconds / 200 % @images.size]
       image.draw_rot *args
