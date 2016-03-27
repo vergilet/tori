@@ -6,7 +6,7 @@ module Tori
       @dude = Player.new(self, "protagonist")
       @dude.move_to 0
       @controls = Controls.new(self, @dude)
-      @backdrop = Backdrop.new(self, "1.jpg")
+      @backdrop = Backdrop.new(self, "bg")
     end
 
     def draw
