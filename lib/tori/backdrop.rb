@@ -2,7 +2,7 @@ module Tori
   class Backdrop
 
     def initialize(window, name)
-      @backdrop = Tori::Animation.new(window, "bg/#{ name }")
+      @backdrop = Tori::Animation.new("bg/#{ name }")
       @scale = window.height.to_f / @backdrop.height.to_f
       @bg_x = -(@backdrop.width * @scale - window.width) / 2
     end

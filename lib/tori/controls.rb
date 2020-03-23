@@ -18,10 +18,10 @@ module Tori
     end
 
     def button_up(key)
-      @player.idle!
+      @player.idle! unless CONTROLS.keys.map { |control| @window.button_down?(control) }.any?
     end
 
-    def update(left, right)
+    def update
       case maching_action
       when :left then @player.move_left
       when :right then @player.move_right

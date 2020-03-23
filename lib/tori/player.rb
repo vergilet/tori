@@ -2,11 +2,11 @@ module Tori
   class Player
     SCALE = 0.5
     ZOOM = 0.8
-    POS_Y = 370
-    SPEED = 3
+    POS_Y = 650
+    SPEED = 5
 
-    def initialize(window, name)
-      @tiles = Tileset.new(window, name)
+    def initialize(name)
+      @tiles = Tileset.new(name)
       @facing = :right
       idle!
     end
@@ -42,10 +42,10 @@ module Tori
 
     class Tileset < Hash
 
-      def initialize(window, name)
-        self[:idle]     = Tori::Animation.new(window, "#{ name }/idle")
-        self[:walking]  = Tori::Animation.new(window, "#{ name }/walking")
-        idle!
+      def initialize(name)
+        self[:idle]     = Tori::Animation.new("#{ name }/idle")
+        self[:walking]  = Tori::Animation.new("#{ name }/walking")
+        walking!
       end
 
       def idle!

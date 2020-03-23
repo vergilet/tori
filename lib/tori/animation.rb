@@ -2,8 +2,8 @@ module Tori
 
   class Animation
 
-    def initialize(window, pattern)
-      @images = find_images_matching(pattern, window)
+    def initialize(pattern)
+      @images = find_images_matching(pattern)
     end
 
     def width
@@ -15,15 +15,15 @@ module Tori
     end
 
     def draw(*args)
-      image = @images[Gosu.milliseconds / 200 % @images.size]
+      image = @images[Gosu.milliseconds / 150 % @images.size]
       image.draw_rot *args
     end
 
     private
 
-    def find_images_matching(pattern, window)
+    def find_images_matching(pattern)
       Dir["assets/#{ pattern }*"].map do |path|
-        Gosu::Image.new(window, path, false)
+        Gosu::Image.new(path, false)
       end
     end
   end
